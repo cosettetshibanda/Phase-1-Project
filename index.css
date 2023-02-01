@@ -15,17 +15,62 @@ input {
     margin-top: 1rem;
 }
 .card {
-    border: 1px solid black;
+    border: 1px solid pink;
     background-color: white;
     padding: .5rem;
 }
 .card > .header {
     margin-bottom: .25rem;
 }
+.card > .header {
+    color: darkblue;
+}
 .card > .body {
     font-size: .8rem;
-    color: lightblue;
+    color: darkviolet;
 }
 .hide {
     display: none;
+}
+
+.rating {
+    border: none;
+    float: left;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.rating > input {
+    display: none;
+}
+.rating > label:before {
+    content: '';
+    background: yellow;
+    width: 20px;
+    height: 20px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    align-self: center;
+}
+.rating > label {
+    border: 2px;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    float: right;
+    margin: 5px;
+    background-color: rgb(204, 204, 204);
+    border-radius: 50%;
+}
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    background-color: purple !important;
+    cursor: pointer;
+}
+.rating > input:checked + label:hover,
+.ratitn > input:hover ~ label:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+    background-color: purple !important;
+    cursor: pointer;
 }

@@ -30,8 +30,27 @@
 const cardTemplate = document.querySelector("[data-card-template]")
 const cardContainer = document.querySelector("[data-cards-container]")
 const search = document.querySelector("[data-search]")
+const rating = document.getElementsByClassName("rating")
+const form = document.querySelector("#comment-form")
+
+const star = Object.entries(rating)
+
+star.forEach((star, index1) => {
+    star.addEventListener("click", () => {
+        console.log("clicked")
+    })
+})
+
 
 let users = []
+
+
+
+// rating.forEach((star, index1) => {
+//     star.addEventListener("click", () => {
+//         console.log("click")
+//     })
+// })
 
 search.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
@@ -58,3 +77,15 @@ fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
                 return {name: user.name, description: user.description, element: card}
             })
          })
+
+
+document.querySelector("#comment-form").addEventListener('submit', (e) => {
+    e.preventDefault()
+    handleComment(e.target.comment_input.value)
+ })
+
+function handleComment(comment){
+    let p = document.createElement('p')
+    p.textContent = comment
+    document.querySelector('#list').appendChild(p)
+}
