@@ -48,10 +48,13 @@ fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
                 const card = cardTemplate.content.cloneNode(true).children[0]
                 const header = card.querySelector("[data-header]")
                 const body = card.querySelector("[data-body]")
-                header.textContent = user.brand
-                body.textContent = user.name
+                const img = document.createElement("img")
+                img.src = user.image_link
+                card.append(img)
+                header.textContent = user.name
+                body.textContent = user.description
                 console.log("user", user)
                 cardContainer.append(card)
-                return {brand: user.brand, name: user.name, element: card}
+                return {name: user.name, description: user.description, element: card}
             })
          })
