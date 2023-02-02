@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: .25rem;
+    font-weight: bold;
+    color:maroon
 }
 
 input {
@@ -33,7 +35,13 @@ input {
     display: none;
 }
 
-.rating {
+.like-glyph{
+    cursor: pointer;
+}
+.like-glyph:hover {
+    color: red;
+}
+/* .rating {
     border: none;
     float: left;
     margin: 0px;
@@ -73,4 +81,4 @@ input {
 .rating > input:checked ~ label:hover ~ label {
     background-color: purple !important;
     cursor: pointer;
-}
+} */

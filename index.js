@@ -31,18 +31,14 @@ const cardTemplate = document.querySelector("[data-card-template]")
 const cardContainer = document.querySelector("[data-cards-container]")
 const search = document.querySelector("[data-search]")
 const rating = document.getElementsByClassName("rating")
-const form = document.querySelector("#comment-form")
+const form = document.getElementById("form")
 
 const star = Object.entries(rating)
 
-star.forEach((star, index1) => {
-    star.addEventListener("click", () => {
-        console.log("clicked")
-    })
-})
-
-
 let users = []
+
+const newNode = document.importNode(cardTemplate.content, true)
+
 
 
 
@@ -52,10 +48,16 @@ let users = []
 //     })
 // })
 
+// for(const star in rating){
+//     star.addEventListener("click", (e) => {
+//         console.log(e)
+//     })
+// }
+
 search.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
     users.forEach(user => {
-        const isVisible = user.brand.toLowerCase().includes(value) || user.name.toLowerCase().includes(value)
+        const isVisible = user.name.toLowerCase().includes(value) || user.description.toLowerCase().includes(value)
         user.element.classList.toggle("hide", !isVisible)
     })
 })
@@ -78,14 +80,65 @@ fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
             })
          })
 
+// console.log(form)
+// form.addEventListener('submit', (e) => {
+//     e.preventDefault()
+//     handleComment(e.target.comment_input.value)
+//  })
 
-document.querySelector("#comment-form").addEventListener('submit', (e) => {
-    e.preventDefault()
-    handleComment(e.target.comment_input.value)
- })
+// function handleComment(comment){
+//     let p = document.createElement('p')
+//     p.textContent = comment
+//     document.querySelector('#list').appendChild(p)
+// }
 
-function handleComment(comment){
-    let p = document.createElement('p')
-    p.textContent = comment
-    document.querySelector('#list').appendChild(p)
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
+const glyphObject = {'♡':FULL_HEART,'♥':EMPTY_HEART}
+const colorState = {"red":"","":"red"}
+
+let likeButtons = document.getElementsByClassName("like-glyph")
+console.log(likeButtons)
+console.log(form)
+ 
+
+
+// function clickListener(){
+//     document.addEventListener("click", (event) => console.log(event.target))
+// }
+// Array.from(likeButtons).forEach(function(like){
+//     console.log(like)
+// })
+ 
+for(like of likeButtons) {
+    like.addEventListener("click", () => {
+        newNode.querySelectorAll(likeButtons)
+        console.log("You found me")
+    })
 }
+// for (like of likeButtons){
+//     like.addEventListener("click", (e) => {
+//     e.target.innerText = glyphObject[e.target.innerText]
+//     e.target.style.color = colorState[e.target.style.color]
+//     })
+// }
+
+// function mimicServerCall(url="http://mimicServer.example.com", config={}) {
+//   return new Promise(function(resolve, reject) {
+//     setTimeout(function() {
+//       let isRandomFailure = Math.random() < .2
+//       if (isRandomFailure) {
+//         reject("Random server error. Try again.");
+//       } else {
+//         resolve("Pretend remote server notified of action!");
+//       }
+//     }, 300);
+//   });
+// }
+
+
+// star.forEach((star, index1) => {
+//     star.addEventListener("click", () => {
+//         console.log("clicked")
+//     })
+// })
