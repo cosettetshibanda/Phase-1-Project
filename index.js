@@ -160,21 +160,25 @@ const searchBar = document.getElementById("searchBar")
 
 let productArray = []
 
-searchBar.addEventListener("input", (e) => {
-    const value = e.target.value.toLowerCase()
-    products.forEach(user => {
-         const isVisible = product.name.toLowerCase().includes(value) || product.description.toLowerCase().includes(value)
-         product.element.classList.toggle("hide", !isVisible)
-           })
-})
+// searchBar.addEventListener("input", (e) => {
+//     const value = e.target.value.toLowerCase()
+//     productArray.forEach(product => {
+//          const isVisible = product.name.toLowerCase().includes(value) || product.description.toLowerCase().includes(value)
+//          console.log(isVisible)
+         
+// console.log(product)
+//          product.divCard.classList.toggle("hide", !isVisible)
+//            })
+// })
 
 const loadProducts = fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
         .then((response) => response.json())
         .then((data) => {
-           displayProducts(data)
+          displayProducts(data)
         })
 
 const displayProducts = (products) =>{
+    productArray = products
     const htmlString = products
     .map((product) => {
      return renderProducts(product)
@@ -267,4 +271,21 @@ function renderProducts(product){
     divCard.setAttribute('class', 'card')
     divCard.append(h2, img, p, span, form, div)
     productList.append(divCard)
+ 
+
+    console.log(divCard.classList)
+
+    searchBar.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase()
+        productArray.forEach(product => {
+             const isVisible = product.name.toLowerCase().includes(value) || product.description.toLowerCase().includes(value)
+            // //  divCard.classList.toggle("hide", !isVisible)
+             if(false){
+                return ('hide')
+             }
+             else{}
+        })
+     })
 }
+
+
