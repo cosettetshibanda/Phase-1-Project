@@ -103,10 +103,10 @@
 //     document.querySelector('#list').appendChild(p)
 // }
 
-// const EMPTY_HEART = '♡'
-// const FULL_HEART = '♥'
-// const glyphObject = {'♡':FULL_HEART,'♥':EMPTY_HEART}
-// const colorState = {"red":"","":"red"}
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
+const glyphObject = {'♡':FULL_HEART,'♥':EMPTY_HEART}
+const colorState = {"red":"","":"red"}
 
 // let likeButtons = document.getElementsByClassName("like-glyph")
 // console.log(likeButtons)
@@ -162,37 +162,109 @@ let productArray = []
 
 searchBar.addEventListener("input", (e) => {
     const value = e.target.value.toLowerCase()
-    
+    products.forEach(user => {
+         const isVisible = product.name.toLowerCase().includes(value) || product.description.toLowerCase().includes(value)
+         product.element.classList.toggle("hide", !isVisible)
+           })
 })
 
 const loadProducts = fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
         .then((response) => response.json())
         .then((data) => {
-            displayProducts(data)
+           displayProducts(data)
         })
 
 const displayProducts = (products) =>{
     const htmlString = products
     .map((product) => {
-        return `
-        <li class="product">
-            <h2>${product.name}</h2>
-            <p>Description: ${product.description}"</p>
-            <img src="${product.image_link}"></img>
-            <footer>
-                        <ul>
-                          <li class="like">Like! <span class="like-glyph">&#x2661;</span></li>
-                        </ul>
-                        <form id="form">
-                            <label for="comments">Comment:</label>
-                            <input type='text' name="comment" id="comment_input" cols="30" rows="10">
-                            </br>
-                            <button type="submit" id='submit'>submit</button>
-                        </form>
-                        <div id='list' class='comments'></div>
-                      </footer>
-        </li>`
+     return renderProducts(product)
+    //     return `
+    //     <li class="product">
+    //         <h2>${product.name}</h2>
+    //         <p>Description: ${product.description}"</p>
+    //         <img src="${product.image_link}"></img>
+    //         <footer>
+    //                     <ul>
+    //                       <li class="like">Like! <span class="like-glyph">&#x2661;</span></li>
+    //                     </ul>
+    //                     <form id="form" onsubmit= "() => console.log("hi")">
+    //                         <label for="comments">Comment:</label>
+    //                         <input type='text' name="comment" id="comment_input" cols="30" rows="10">
+    //                         </br>
+    //                         <button type="submit" id='submit'>submit</button>
+    //                     </form>
+    //                     <div id='list' class='comments'></div>
+    //                   </footer>
+    //     </li>`
+    // })
+    // .join('')
+    // productList.innerHTML = htmlString
+})
+}
+
+// console.log(form)
+// form.addEventListener('submit', (e) => {
+//     e.preventDefault()
+//   handleComment(e.target.comment_input.value)
+//    })
+ 
+function handleComment(comment){
+     let p = document.createElement('p')
+     p.textContent = comment
+      document.querySelector('#list').appendChild(p)
+  }
+
+
+
+function renderProducts(product){
+    let h2 = document.createElement("h2")
+    h2.innerText = product.name
+
+    let p = document.createElement("p")
+    p.innerText = product.description
+
+    let img = document.createElement("img")
+    img.setAttribute('src', product.image_link)
+    
+
+    let span = document.createElement("span")
+    span.setAttribute('class', 'like-btn')
+    span.setAttribute('id', 'like-glyph')
+    span.innerText = '♡'
+    span.addEventListener('click', (e) => {
+        e.target.innerText = glyphObject[e.target.innerText]
+        e.target.style.color = colorState[e.target.style.color]
     })
-    .join('')
-    productList.innerHTML = htmlString
+
+    let div = document.createElement("div")
+    div.setAttribute('id', 'list')
+    div.setAttribute('class', 'comments')
+
+    // let label = document.createElement("label")
+    // label.setAttribute('for','comments')
+
+    let input = document.createElement("input")
+    input.setAttribute('type', 'text')
+
+
+    let btn2 = document.createElement("button")
+    btn2.setAttribute('type', 'submit')
+    btn2.setAttribute('id', 'submit')
+    btn2.innerText = " submit"
+    
+
+    let form = document.createElement("form")
+    form.setAttribute('id','form')
+    form.innerText = "Comment: "
+    form.append(input, btn2)
+    form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        handleComment(e.target[0].value)
+    })
+
+
+    let divCard = document.createElement('div')
+    divCard.setAttribute('class', 'card')
+    divCard.append(h2, img, p, span, form, div)
+    productList.append(divCard)
 }
