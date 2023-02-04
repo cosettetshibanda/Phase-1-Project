@@ -4,17 +4,16 @@ const glyphObject = {'♡':FULL_HEART,'♥':EMPTY_HEART}
 const colorState = {"red":"","":"red"}
 
 const productList = document.getElementById("productList")
-
+  
 const loadProducts = fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
         .then((response) => response.json())
         .then((products) => 
          products.map((product) => {
             return renderProducts(product)
         }))
-    
 
+function renderProducts(product){  
 
-function renderProducts(product){
     let h2 = document.createElement("h2")
     h2.innerText = product.name
 
@@ -27,11 +26,11 @@ function renderProducts(product){
        let currHeight = img.clientHeight
        img.style.height = (currHeight + 150) + "px";
     })
+
     img.addEventListener("mouseout", (e) => {
         let currHeight = img.clientHeight
         img.style.height = (currHeight - 150) + "px"
     })
-
 
     let span = document.createElement("span")
     span.setAttribute('class', 'like-btn')
@@ -67,7 +66,6 @@ function renderProducts(product){
     divCard.setAttribute('class', 'card')
     divCard.append(h2, img, p, span, form)
     productList.append(divCard)
-
 }
 
 function handleComment(comment){
@@ -75,4 +73,3 @@ function handleComment(comment){
     p.textContent = comment
      document.getElementById('list').appendChild(p)
  }
- 
