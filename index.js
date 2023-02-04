@@ -23,7 +23,7 @@ const displayProducts = (products) =>{
 function handleComment(comment){
      let p = document.createElement('p')
      p.textContent = comment
-      document.querySelector('#list').appendChild(p)
+      document.getElementById('list').appendChild(p)
   }
 
 
@@ -44,7 +44,7 @@ function renderProducts(product){
         let currHeight = img.clientHeight
         img.style.height = (currHeight - 150) + "px"
     })
-    
+
 
     let span = document.createElement("span")
     span.setAttribute('class', 'like-btn')
@@ -73,7 +73,7 @@ function renderProducts(product){
     let form = document.createElement("form")
     form.setAttribute('id','form')
     form.innerText = "Comment: "
-    form.append(input, btn2)
+    form.append(input, btn2, div)
     form.addEventListener("submit", (e) => {
         e.preventDefault()
         handleComment(e.target[0].value)
@@ -82,8 +82,10 @@ function renderProducts(product){
 
     let divCard = document.createElement('div')
     divCard.setAttribute('class', 'card')
-    divCard.append(h2, img, p, span, form, div)
+    divCard.append(h2, img, p, span, form)
     productList.append(divCard)
+
+    
 }
 
 
