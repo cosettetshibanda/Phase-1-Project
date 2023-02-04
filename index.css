@@ -37,18 +37,12 @@ h2 {
     color:brown;
     font-size:x-large;
   }
-  #list p:nth-child() {
-    color: darkblue;
-    font-size:large;
-  }
-  #list p:nth-last-child() {
-    color:mediumblue;
-    font-size: medium;
+
+  #list p {
+    color: black;
+    font-size: large;
   }
  
-  element.style {
-    color: black;
-  }
 #list {
-    line-height: .05cm;
+    line-height: .8cm;
 }
