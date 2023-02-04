@@ -229,6 +229,9 @@ function renderProducts(product){
 
     let img = document.createElement("img")
     img.setAttribute('src', product.image_link)
+    img.addEventListener("mouseover", (e) = {
+        
+    })
     
 
     let span = document.createElement("span")
