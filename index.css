@@ -4,6 +4,7 @@
     column-gap: 10rem;
     row-gap: .25rem;
     margin-top: 1rem;
+    border-style: dotted;
 }
 
 h1 {
@@ -32,3 +33,22 @@ h2 {
   button#submit{
     color: purple;
   }
+  div#list.comments {
+    color:brown;
+    font-size:x-large;
+  }
+  #list p:nth-child() {
+    color: darkblue;
+    font-size:large;
+  }
+  #list p:nth-last-child() {
+    color:mediumblue;
+    font-size: medium;
+  }
+ 
+  element.style {
+    color: black;
+  }
+#list {
+    line-height: .05cm;
+}

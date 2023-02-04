@@ -25,6 +25,7 @@ function handleComment(comment){
      p.textContent = comment
       document.getElementById('list').appendChild(p)
   }
+  
 
 
 function renderProducts(product){
@@ -55,9 +56,10 @@ function renderProducts(product){
         e.target.style.color = colorState[e.target.style.color]
     })
 
-    let div = document.createElement("div")
-    div.setAttribute('id', 'list')
-    div.setAttribute('class', 'comments')
+    // let div = document.createElement("div")
+    // div.setAttribute('id', 'list')
+    // div.setAttribute('class', 'comments')
+    // div.innerText = "Comment List:"
 
 
     let input = document.createElement("input")
@@ -73,19 +75,25 @@ function renderProducts(product){
     let form = document.createElement("form")
     form.setAttribute('id','form')
     form.innerText = "Comment: "
-    form.append(input, btn2, div)
+    form.append(input, btn2)
     form.addEventListener("submit", (e) => {
         e.preventDefault()
-        handleComment(e.target[0].value)
+        handleComment(`${product.name}` + " - " + e.target[0].value )
+        // handleComment(e.target[0].value)
+        return e.target[0].value = ''
     })
-
+    form.reset()
 
     let divCard = document.createElement('div')
     divCard.setAttribute('class', 'card')
     divCard.append(h2, img, p, span, form)
     productList.append(divCard)
 
-    
 }
 
 
+
+let div = document.createElement("div")
+div.setAttribute('id', 'list')
+div.setAttribute('class', 'comments')
+div.innerText = "Comment List:"
