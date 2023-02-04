@@ -5,9 +5,12 @@ I have always been interested in makeup but never had someone to teach me how to
 ## Details
 For this project it focuses on one specific brand: "Maybelline." It outlines each of their products by identifying the name, a description of the product, and an image to view what it looks like.
 
-
 ## Features
-1. 
+1. Can enlarge image by moving your mouse over it.
+2. Can leave comments on specific products.
+3. Can heart products that you enjoy.
+4. Has a link that can take you to the bottom of the page to see all the comments.
+
 
 ## How to Use
 

@@ -79,7 +79,7 @@ function renderProducts(product){
     form.addEventListener("submit", (e) => {
         e.preventDefault()
         handleComment(`${product.name}` + " - " + e.target[0].value )
-        // handleComment(e.target[0].value)
+        alert("Comment moved to the bottom of the page. There is a link at the top to take you to the bottom of the page.")
         return e.target[0].value = ''
     })
     form.reset()
