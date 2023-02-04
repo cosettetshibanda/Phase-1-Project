@@ -5,21 +5,11 @@ const colorState = {"red":"","":"red"}
 
 const productList = document.getElementById("productList")
 
-let productArray = []
-
-searchBar.addEventListener("input", (e) => {
-    const value = e.target.value.toLowerCase()
-    productArray.forEach(product => {
-         const isVisible = product.name.toLowerCase().includes(value) || product.description.toLowerCase().includes(value)
-         product.classList.toggle("hide", !isVisible)
-           })
-})
-
 
 const loadProducts = fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
         .then((response) => response.json())
         .then((products) => 
-           productArray = products.map((product) => {
+           products.map((product) => {
             return renderProducts(product)
         }))
 
