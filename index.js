@@ -5,13 +5,13 @@ const colorState = {"red":"","":"red"}
 
 const productList = document.getElementById("productList")
 
-
 const loadProducts = fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
         .then((response) => response.json())
         .then((products) => 
-           products.map((product) => {
+         products.map((product) => {
             return renderProducts(product)
         }))
+    
 
 
 function renderProducts(product){

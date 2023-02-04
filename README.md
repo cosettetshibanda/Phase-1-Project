@@ -21,10 +21,10 @@ On each card of data there is also a heart. If you click the heart it will turn 
 
 The other item that changes when you hover over it is the pictures. When you move your mouse over the pictures they will increase in size. This allows you to see them better. When you move the mouse away the picture returns to its regular size. This allows you to easily peruse the rest of the site without the picture getting in the way. 
 
-## installation instructions
+## Installation Instructions
 In order to upload this website for your own benefits you can go to the github link: https://github.com/learn-co-curriculum/phase-1-javascript-project-mode. There you can click on the code button and this will give you some information. If you then click on the SSH tab you can copy the link. 
 
 Once you copy the link you can then go to your terminal and type: "git clone" then paste the link and push enter. This will copy the site to your own page. You can then type in the terminal "open index.html" to bring up the website. 
 
-## contributing
+## Contributing
 If you want to contribut in making this project more successful feel free to email me at cosettetshibanda@gmail.com
