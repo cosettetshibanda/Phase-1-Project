@@ -1,4 +1,4 @@
-.search-wrapper {
+/* .search-wrapper {
     display: flex;
     flex-direction: column;
     gap: .25rem;
@@ -40,7 +40,7 @@ input {
 }
 .like-glyph:hover {
     color: red;
-}
+} */
 
 /* .rating {
     border: none;
@@ -83,3 +83,38 @@ input {
     background-color: purple !important;
     cursor: pointer;
 } */
+
+#productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    column-gap: 10rem;
+    row-gap: .25rem;
+    margin-top: 1rem;
+}
+
+h1 {
+    color: maroon;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h2 {
+    color: pink;
+    font-family:fantasy;
+ }
+ p {
+    color:cadetblue
+ }
+ span#like-glyph.like-btn {
+    font-size: 24px;
+ }
+ span#like-glyph.like-btn:hover {
+    color: red;
+ }
+ form#form {
+    color: purple;
+ }
+ br {
+    content: "";
+  }
+  button#submit{
+    color: purple;
+  }

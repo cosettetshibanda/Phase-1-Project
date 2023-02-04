@@ -282,18 +282,18 @@ function renderProducts(product){
  
 
     
-    searchBar.addEventListener("input", (e) => {
-        const value = e.target.value.toLowerCase()
-        productArray.forEach(product => {
-             const isVisible = product.name.toLowerCase().includes(value) || product.description.toLowerCase().includes(value)
-             document.querySelector(".card").classList.toggle("hide", !isVisible);
-            // //  divCard.classList.toggle("hide", !isVisible)
-        //      if(false){
-        //         return ('hide')
-        //      }
-        //      else{}
-         })
-     })
+    // searchBar.addEventListener("input", (e) => {
+    //     const value = e.target.value.toLowerCase()
+    //     productArray.forEach(product => {
+    //          const isVisible = product.name.toLowerCase().includes(value) || product.description.toLowerCase().includes(value)
+    //          document.querySelector(".card").classList.toggle("hide", !isVisible);
+    //     //     // //  divCard.classList.toggle("hide", !isVisible)
+    //     // //      if(false){
+    //     // //         return ('hide')
+    //     // //      }
+    //     // //      else{}
+    //     //  })
+    //  })
 }
 
 
