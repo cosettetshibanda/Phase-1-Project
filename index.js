@@ -5,27 +5,23 @@ const colorState = {"red":"","":"red"}
 
 const productList = document.getElementById("productList")
 
+let productArray = []
+
+searchBar.addEventListener("input", (e) => {
+    const value = e.target.value.toLowerCase()
+    productArray.forEach(product => {
+         const isVisible = product.name.toLowerCase().includes(value) || product.description.toLowerCase().includes(value)
+         product.classList.toggle("hide", !isVisible)
+           })
+})
+
 
 const loadProducts = fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
         .then((response) => response.json())
-        .then((data) => {
-          displayProducts(data)
-        })
-
-const displayProducts = (products) =>{
-    const htmlString = products
-    .map((product) => {
-     return renderProducts(product)
-})
-}
-
-
-function handleComment(comment){
-     let p = document.createElement('p')
-     p.textContent = comment
-      document.getElementById('list').appendChild(p)
-  }
-  
+        .then((products) => 
+           productArray = products.map((product) => {
+            return renderProducts(product)
+        }))
 
 
 function renderProducts(product){
@@ -56,12 +52,6 @@ function renderProducts(product){
         e.target.style.color = colorState[e.target.style.color]
     })
 
-    // let div = document.createElement("div")
-    // div.setAttribute('id', 'list')
-    // div.setAttribute('class', 'comments')
-    // div.innerText = "Comment List:"
-
-
     let input = document.createElement("input")
     input.setAttribute('type', 'text')
 
@@ -79,10 +69,9 @@ function renderProducts(product){
     form.addEventListener("submit", (e) => {
         e.preventDefault()
         handleComment(`${product.name}` + " - " + e.target[0].value )
-        alert("Comment moved to the bottom of the page. There is a link at the top to take you to the bottom of the page.")
+        alert("Comment moved to the bottom of the page. Link found at the top")
         return e.target[0].value = ''
     })
-    form.reset()
 
     let divCard = document.createElement('div')
     divCard.setAttribute('class', 'card')
@@ -91,9 +80,9 @@ function renderProducts(product){
 
 }
 
-
-
-let div = document.createElement("div")
-div.setAttribute('id', 'list')
-div.setAttribute('class', 'comments')
-div.innerText = "Comment List:"
+function handleComment(comment){
+    let p = document.createElement('p')
+    p.textContent = comment
+     document.getElementById('list').appendChild(p)
+ }
+ 
