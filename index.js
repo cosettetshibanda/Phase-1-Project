@@ -229,8 +229,13 @@ function renderProducts(product){
 
     let img = document.createElement("img")
     img.setAttribute('src', product.image_link)
-    img.addEventListener("mouseover", (e) = {
-        
+    img.addEventListener("mouseover", (e) => {
+       let currHeight = img.clientHeight
+       img.style.height = (currHeight + 100) + "px";
+    })
+    img.addEventListener("mouseout", (e) => {
+        let currHeight = img.clientHeight
+        img.style.height = (currHeight - 100) + "px"
     })
     
 
