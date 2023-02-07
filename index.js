@@ -4,11 +4,13 @@ const glyphObject = {'♡':FULL_HEART,'♥':EMPTY_HEART}
 const colorState = {"red":"","":"red"}
 
 const productList = document.getElementById("productList")
-  
+productArray = []  
+
+console.log(productArray)
 const loadProducts = fetch (`https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`)
         .then((response) => response.json())
         .then((products) => 
-         products.map((product) => {
+         productArray = products.map((product) => {
             return renderProducts(product)
         }))
 
