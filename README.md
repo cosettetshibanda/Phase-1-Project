@@ -28,3 +28,7 @@ Once you copy the link, you can then go to your terminal and type: "git clone". 
 
 ## Contributing
 If you want to contribut in making this project more successful, feel free to email me at cosettetshibanda@gmail.com.
+
+
+## Blog
+https://medium.com/@cosettetshibanda/options-for-uploading-apis-as-card-data-cda2b7097ca9
